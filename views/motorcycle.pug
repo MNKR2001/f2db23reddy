@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  - var results=[{model:"Himalayan", cylindercapacity:1,colour :"black"},{model:"bullet", cylindercapacity:2,colour:"white"},{model:"interceptor", cylindercapacity:3,colour:"brown"}];
+    
+  
+  div(class="container-fluid")
+    div(class="row")
+      each item, index in results
+        div(class="col-sm-2",onclick=`buy(${index})`) model is #{item.model} <br /> cylindercapcity is #{item.cylindercapacity} <br /> colour is #{item.colour}
+
+  script.
+   function buy(x) 
+   {
+     alert(`You purchased item ${x}`)
+   }
+  

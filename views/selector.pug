@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names=["bullet","thunderbird","himalayan","interceptor","continental"];
+  - for (let i = 0; i < 3; i++) {
+     - var pic=Math.floor(Math.random()*5)
+     - var motorcycle=image_names[pic]
+     img(src=`images/${motorcycle}.jpg`,alt=`${motorcycle}`,height=300,width=300)
+  - }
