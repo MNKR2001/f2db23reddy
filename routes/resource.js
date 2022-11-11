@@ -18,3 +18,5 @@ router.get('/motorcycles/:id', motorcycle_controller.motorcycle_detail);
 // GET request for list of all motorcycle items.
 router.get('/motorcycles', motorcycle_controller.motorcycle_list);
 module.exports = router;
+// GET request for one motorcyle. 
+router.get('/motorcycle/:id', motorcycle_controller.motorcycle_detail); 
