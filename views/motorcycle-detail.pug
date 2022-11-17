@@ -1,0 +1,21 @@
+extends layout 
+ 
+block content 
+  h1(class = 'container-fluid p-5 bg-success text-warning text-center')= title 
+ 
+  if (toShow == null)
+    h2 No instance to Detail View 
+  else 
+    - let objectId = toShow._id
+    - let model = toShow.model
+    - let cylindercapacity = toShow.cylindercapacity
+    - let colour = toShow.colour 
+    div(class='justify-content-center p-2 text-center text-dark',style='background-color:#ccffff')
+      div.row 
+        div(class='p-2 flex-fill motorcycleAttr mr-3') Obejct Id : #{objectId}         
+      div.row 
+        div(class='p-2 flex-fill motorcycleAttr mr-3') Motorcycle model  : #{model}
+      div.row 
+        div(class='p-2 flex-fill motorcycleAttr mr-3') Motorcycle cylindercapacity   :  #{cylindercapacity} 
+      div.row 
+        div(class='p-2 flex-fill motorcycleAttr mr-3') colour  : #{colour}  

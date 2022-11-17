@@ -2,17 +2,17 @@ extends layout
 
 block content
   h1= title
-  - var results=[{model:"Himalayan", cylindercapacity:1,colour :"black"},{model:"bullet", cylindercapacity:2,colour:"white"},{model:"interceptor", cylindercapacity:3,colour:"brown"},{model:"Himalayan", cylindercapacity:1,colour:"black"}];
+  - var results = results
+  //- var results=[{model:"Himalayan", cylindercapacity:1,colour :"black"},{model:"bullet", cylindercapacity:2,colour:"white"},{model:"interceptor", cylindercapacity:3,colour:"brown"},{model:"Himalayan", cylindercapacity:1,colour:"black"}];
     
   
   div(class="container-fluid")
     div(class="row")
       each item, index in results
-        div(class="col-sm-2",onclick=`buy(${index})`) model is #{item.model} <br /> cylindercapcity is #{item.cylindercapacity} <br /> colour is #{item.colour}
+            div.col-sm-2(onclick=`buy(${index})`) <br><br>_id: #{item["_id"]} <br>model: #{item["model"]} <br> cylindercapacity  #{item["cylindercapacity"]} <br> colour: #{item["colour"]}<br>
+
 
   script.
-   function buy(x) 
-   {
-     alert(`You purchased item ${x}`)
-   }
-  
+    function buy(index) {
+      alert("You purchased item " + index)
+    }

@@ -1,0 +1,37 @@
+extends layout 
+
+block content 
+  h1(class = 'container-fluid p-5 bg-success text-warning text-center')= title 
+ 
+  form(id='motorcycleForm',class='justify-content-center p-2 bg-light text-center text-dark',action="/resource/motorcycle", method="POST") 
+    div.form-group
+        label.motorcycleAttr(for='model' style="margin-right: 5px;") Model
+        input#model(type='text', name='model' style="width:500px;")
+    br
+    div.form-group 
+        label.motorcycleAttr(for='cylindercapacity' style="margin-right: 5px;") Cylinder Capacity
+        input#cylindercapacity(type='number', name='cylindercapacity' style="width:500px;") 
+    br
+    div.form-group 
+        label.motorcycleAttr(for='colour' style="margin-right: 5px;") colour
+        input#colour(type='text', name='colour' style="width:500px;") 
+    br    
+    input(class="btn btn-success" type="submit") 
+ 
+  script. 
+    document.forms['motorcycleForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
