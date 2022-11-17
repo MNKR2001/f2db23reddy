@@ -7,12 +7,13 @@ block content
     
   
   div(class="container-fluid")
-    div(class="row")
-      each item, index in results
-            div.col-sm-2(onclick=`buy(${index})`) <br><br>_id: #{item["_id"]} <br>model: #{item["model"]} <br> cylindercapacity  #{item["cylindercapacity"]} <br> colour: #{item["colour"]}<br>
-
-
-  script.
-    function buy(index) {
-      alert("You purchased item " + index)
-    }
+    div(class="row m-1")
+      each item in results
+       - let destination = `dispatch(\"/motorcycle/update?id=${item._id}\")` 
+       div(class="row-sm-2", class="m-1") <br><br>_id: #{item["_id"]} <br>model: #{item["model"]} <br> cylindercapacity  #{item["cylindercapacity"]} <br> colour: #{item["colour"]}<br>
+       button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
