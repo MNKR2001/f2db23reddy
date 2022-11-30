@@ -31,17 +31,5 @@ router.get('/motorcycle', motorcycle_controller.motorcycle_list);
 /* GET update Motorcycle page */ 
 router.get('/update', motorcycle_controller.motorcycle_update_Page); 
 
-// A little function to check if we have an authorized user and continue on 
-// redirect to login. 
-const secured = (req, res, next) => { 
-    if (req.user){ 
-      return next(); 
-    } 
-    req.session.returnTo = req.originalUrl; 
-    res.redirect("/login"); 
-  } 
-
-/* GET update motorcycle page */ 
-router.get('/update', secured,    
-   motorcycle_controller.motorcycle_update_Page);   
+  
 module.exports = router;
